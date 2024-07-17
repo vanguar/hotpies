@@ -1,0 +1,31 @@
+Перенос изменений в GitHub
+
+
+
+https://github.com/vanguar/hotpies.git
+
+Перейдите в директорию вашего проекта:
+
+
+
+cd "C:\Users\User\Desktop\hotpies"
+
+
+Добавьте все изменения в staging area:
+
+
+git add .
+
+
+Закоммитьте изменения с соответствующим сообщением:
+
+
+
+
+git commit -m "Описание изменений"
+
+
+Отправьте изменения в ваш репозиторий на GitHub:
+
+
+git push origin master
