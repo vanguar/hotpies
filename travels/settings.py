@@ -21,15 +21,17 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
-
+load_dotenv(dotenv_path=os.path.join(BASE_DIR, '.env'))  # загружаем переменные из .env
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-j-=tr2k_38rtz-32elxoc3=jbj5p*7m!t4m&difp9m$^-rkp&&'
+SECRET_KEY = os.getenv('SECRET_KEY')
+print(f"Loaded SECRET_KEY: {os.getenv('SECRET_KEY')}")
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = bool(os.environ.get('DJANGO_DEBUG', True))
+DEBUG = os.environ.get('DJANGO_DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'hotpies-6bec6f5fcf91.herokuapp.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'hotpies.click', 'www.hotpies.click']
 
 # Application definition
 
@@ -41,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'traveler.apps.TravelerConfig',
+    'django.contrib.syndication',
 ]
 
 
@@ -123,6 +126,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = []
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field

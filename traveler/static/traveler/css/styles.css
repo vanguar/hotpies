@@ -20,7 +20,7 @@ a:hover {
 img {max-width: 600px; height: auto;}
 
 img.img-article-left {
-	max-width: 300px;
+	max-width: 600px;
 	height: auto;
 	float: left;
 	padding: 0 10px 10px 0;
@@ -84,13 +84,36 @@ ul.list-articles li {
 	height: 80px;
 }
 
+
+@media (max-width: 768px) {
+    .header {
+        height: auto;
+    }
+
+    ul.mainmenu {
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    ul.mainmenu li {
+        float: none;
+        margin: 10px 0;
+    }
+}
+
+
 .logo {
     position: relative;
 	background: url('/static/traveler/images/logo.svg') no-repeat 10px 5px;
-	width: 120px;
+	width: 110px;
 	height: 81px;
-	
- 
+    padding: 5px;
+    padding-bottom: 5px;
+    margin-left:15px;
+    margin:5px;
+
 }
 
 
@@ -166,6 +189,24 @@ div.button {
 	width: 100%;
 	min-height: 100%;
 	height: 100%;
+}
+
+@media (max-width: 768px) {
+    .table-content {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .left-chapters {
+        order: 2;
+        border-right: none;
+        border-top: 1px solid #ccc;
+    }
+
+    .content {
+        order: 1;
+        padding: 20px;
+    }
 }
 
 .left-chapters {
@@ -392,6 +433,12 @@ ul.lang-list li a:hover {color: #fdc073;}
     font-size: 16px;
 }
 
+@media (max-width: 768px) {
+    .form-input {
+        width: 100%;
+    }
+}
+
 .form-label {
     display: inline-block;
     min-width: 150px;
@@ -529,3 +576,114 @@ ul.lang-list li a:hover {color: #fdc073;}
 .link-url:hover {
     text-decoration: underline;
 }
+
+.hotpies p {
+            text-align: center;
+            font-size: 28px; /* Крупный шрифт для заголовка */
+			font-family: 'Roboto', sans-serif;
+}
+
+/* Изменение размера иконки дома */
+.home-icon {
+    width: 40px; /* Сделали иконку меньше */
+    height: 40px;
+    margin-right: 10px; /* Отступ справа для визуального разделения с текстом */
+}
+
+/* Центровка иконки самолета и текста */
+.hotpies {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom:5px;
+}
+
+.plane-icon {
+    width: 30px; /* Размер иконки самолета */
+    height: 30px;
+    margin-right: 10px; /* Отступ между иконкой самолета и текстом */
+    padding:5px;
+}
+
+.hotpies-text {
+    font-size: 28px; /* Размер шрифта для текста */
+    font-family: 'Roboto', sans-serif;
+    color: white;
+}
+
+
+.post-title {
+    font-family: 'Roboto', sans-serif;
+    color: #333;
+    font-weight: 700;
+    font-size: 28px;
+}
+
+
+
+.img-article-left {
+    transition: transform 0.2s ease-in-out;
+    cursor: zoom-in;
+}
+
+.img-article-left:hover {
+    transform: scale(1.05);
+	z-index: 10;
+    position: relative;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 100; /* увеличиваем z-index */
+    padding-top: 50px; /* можно уменьшить */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+	transition: transform 0.2s ease; /* Плавное масштабирование */
+    cursor: zoom-in;
+}
+
+.modal-content, .close {
+    animation-name: zoom;
+    animation-duration: 0.6s;
+}
+
+.modal-content:active {
+    cursor: grabbing; /* Изменение курсора при перемещении */
+}
+
+@keyframes zoom {
+    from {transform: scale(0)}
+    to {transform: scale(1)}
+}
+
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    z-index: 101; /* увеличиваем z-index */
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+

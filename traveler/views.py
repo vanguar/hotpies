@@ -25,7 +25,7 @@ class Dir_travelHome(DataMixin, ListView):
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
-        c_def = self.get_user_context(title='Главная страница')
+        c_def = self.get_user_context(title='Home page')
         return  dict(list(context.items()) + list(c_def.items()))
 
 
@@ -38,7 +38,7 @@ def about(request):
     paginator = Paginator(contact_list, 3)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
-    return render(request, 'traveler/about.html', {'page_obj': page_obj, 'menu': menu, 'title': 'О сайте'})
+    return render(request, 'traveler/about.html', {'page_obj': page_obj, 'menu': menu, 'title': 'About the site'})
 
 
 class AddPage(LoginRequiredMixin, DataMixin, CreateView):
@@ -49,7 +49,7 @@ class AddPage(LoginRequiredMixin, DataMixin, CreateView):
 
     def get_context_data(self, *, oblect_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
-        c_def = self.get_user_context(title='Добавление статьи')
+        c_def = self.get_user_context(title='Adding an article')
         return dict(list(context.items()) + list(c_def.items()))
 
 
@@ -73,7 +73,7 @@ class ContactFormView(DataMixin, FormView):
 
     def get_context_data(self, *, oblect_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
-        c_def = self.get_user_context(title='Обратная связь')
+        c_def = self.get_user_context(title='Feedback')
         return dict(list(context.items()) + list(c_def.items()))
 
     def form_valid(self, form):
@@ -130,7 +130,7 @@ class RegisterUser(DataMixin, CreateView):
 
     def get_context_data(self, *, oblect_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
-        c_def = self.get_user_context(title='Регистрация')
+        c_def = self.get_user_context(title='Registration')
         return dict(list(context.items()) + list(c_def.items()))
 
     def form_valid(self, form):
@@ -144,7 +144,7 @@ class LoginUser(DataMixin, LoginView):
 
     def get_context_data(self, *, oblect_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
-        c_def = self.get_user_context(title='Авторизация')
+        c_def = self.get_user_context(title='Authorization')
         return dict(list(context.items()) + list(c_def.items()))
 
     def get_success_url(self):

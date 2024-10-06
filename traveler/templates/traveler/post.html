@@ -1,18 +1,28 @@
 {% extends 'traveler/base.html' %}
 
 {% block content %}
-<h1>{{post.title}}</h1>
+<h1 style="text-transform: none;">{{ post.title }}</h1>
 
 {% if post.photo %}
-<p><img class="img-article-left" src="{{post.photo.url}}"></p>
+<div>
+    <img id="myImg" class="img-article-left" src="{{ post.photo.url }}" alt="{{ post.title }}">
+</div>
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="img01">
+</div>
 {% endif %}
 
-{{post.content|linebreaks}}
 
-<!-- Включаємо рекламний блок -->
+<!-- Тут используем safe для сохранения HTML в контенте -->
+<p style="text-transform: none;">{{ post.content | safe }}</p>
+
+<!-- Включаем рекламный блок -->
 {% include 'traveler/ad_block.html' %}
 
-<!-- Включаємо полезные ссылки -->
+<!-- Включаем полезные ссылки -->
 {% include 'traveler/useful_links.html' %}
 
 {% endblock %}

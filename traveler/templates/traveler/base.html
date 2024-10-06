@@ -9,7 +9,19 @@
 	<link rel="shortcut icon" href="{% static 'traveler/images/main.ico' %}" type="image/x-icon"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Інші метатеги і стилі -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+	<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QPGXQ21GF1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-QPGXQ21GF1');
+</script>
 
 </head>
 <body>
@@ -20,20 +32,29 @@
         <ul id="mainmenu" class="mainmenu">
             <li class="logo">
                 <a href="{% url 'home' %}">
-				<img src="{% static 'traveler/images/logo.svg' %}"
-				alt="Логотип" style="width: 90px; height: 61;">
-                 
+				<img src="{% static 'traveler/images/house.png' %}"
+				alt="Логотип" style="width: 60px; height: 41;">
+
                 </a>
             </li>
-            {% for m in menu %}
+			<div class="hotpies">
+			    <a href="{% url 'home' %}">
+				<img src="{% static 'traveler/images/logo.svg' %}"
+				alt="Логотип" style="width: 80px; height: 51;">
+
+                </a>
+                <p>hotpies</p>
+            </div>
+
+            <!-- {% for m in menu %}
                 <li><a href="{% url m.url_name %}">{{ m.title }}</a></li>
             {% endfor %}
 
             {% if request.user.is_authenticated %}
-                <li class="last"> {{ user.username }} | <a href="{% url 'logout' %}">Выйти</a></li>
+                <li class="last"> {{ user.username }} | <a href="{% url 'logout' %}">Go out</a></li>
             {% else %}
-                <li class="last"><a href="{% url 'register' %}">Регистрация</a> | <a href="{% url 'login' %}">Войти</a></li>
-            {% endif %}
+                <li class="last"><a href="{% url 'register' %}">Registration</a> | <a href="{% url 'login' %}">To come in</a></li>
+            {% endif %}-->
         </ul>
         <div class="clear"></div>
     </div>
@@ -48,9 +69,9 @@
     <ul id="leftchapters">
 
 {% if cat_selected == 0 %}
-        <li class="selected">Континенты</li>
+        <li class="selected">Continents</li>
 {% else %}
-        <li><a href="{% url 'home' %}">Континенты</a></li>
+        <li><a href="{% url 'home' %}">Continents</a></li>
 {% endif %}
 
 {% for c in cats %}
@@ -64,11 +85,11 @@
 {% endfor %}
 
 
-        <li class="share">
-        <!-- Включаємо рекламний блок -->
+<li class="share">
+<!-- Включаємо рекламний блок -->
 {% include 'traveler/ad_block_side.html' %}
-        <a class="share-yt" href="#"></a>
-        </li>
+
+</li>
     </ul>
     </td>
 <!--Конец Sidebar -->
@@ -119,25 +140,53 @@
 <tr><td valign="top">
     <!-- Ваш footer тут -->
 <footer id="footer">
-    <a href="https://www.instagram.com" target="_blank">
+    <a href="https://www.instagram.com/hotpies_ua/" target="_blank">
         <i class="fab fa-instagram"></i>
-    </a>
-    <a href="https://www.youtube.com" target="_blank">
-        <i class="fab fa-youtube"></i>
     </a>
     <a href="https://www.facebook.com" target="_blank">
         <i class="fab fa-facebook"></i>
     </a>
-    <a href="https://www.twitter.com" target="_blank">
-        <i class="fab fa-twitter"></i>
-    </a>
-    <a href="https://www.pinterest.com" target="_blank">
+	<a href="https://x.com/HotPiesClick" target="_blank" style="font-weight: bold;">X</a>
+    <a href="https://www.pinterest.de/avotiyaaa" target="_blank">
         <i class="fab fa-pinterest"></i>
     </a>
 </footer>
 
 </td></tr></table>
 <!-- Конец Footer -->
+
+<script>
+    var modal = document.getElementById("myModal");
+    var img = document.getElementById("myImg");
+    var modalImg = document.getElementById("img01");
+    var span = document.getElementsByClassName("close")[0];
+
+    var scale = 1;
+
+    img.onclick = function() {
+        modal.style.display = "block";
+        modalImg.src = this.src;
+        scale = 1; // Сброс масштаба при открытии
+        modalImg.style.transform = "scale(1)";
+    }
+
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    modalImg.onwheel = function(event) {
+        event.preventDefault(); // Предотвращаем прокрутку страницы
+        if (event.deltaY < 0) {
+            scale += 0.1; // Увеличение
+        } else {
+            scale = Math.max(1, scale - 0.1); // Уменьшение, минимальный масштаб - 1
+        }
+        modalImg.style.transform = "scale(" + scale + ")";
+    }
+</script>
+
+
+
 </body>
 </html>
 
